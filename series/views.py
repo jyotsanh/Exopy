@@ -1,3 +1,9 @@
-from django.shortcuts import render
+#   ACCOUNT URL
 
-# Create your views here.
+from django.shortcuts import render,redirect
+
+def dash(request):
+    if request.method == 'POST':
+        None
+    else:
+        return render(request,"./templates/dash.html")
