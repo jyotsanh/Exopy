@@ -15,10 +15,19 @@
         
         <img src="{% static 'Logo1.png' %}" 8alt="Logo">
     </div>
-    <div class="container">
+    
+    <div class="container" >
         <h1>Sign In</h1>
-        <div class="form" >
-            <input type="email" placeholder="Email or Phone number" required name="email">
+        <form method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;">{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <input type="username" placeholder="Username" required name="username">
             <input type="password" placeholder="Password" required name="password">
             <input type="submit" value="Sign In" required name="submit">
             <input type="checkbox">
@@ -26,9 +35,9 @@
                 Remember me
             </label>
             <a href="#">Need Help</a>
-        </div>
+        </form>
         <div class="content">
-            <h2>New to Netflix? <a href="/register">Sign up now </a></h2>
+            <h2>New to Exopy <a href="/register">Sign up now </a></h2>
         </div>
     </div>
 
