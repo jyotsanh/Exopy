@@ -6,12 +6,15 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
+
 
 def dash(request):
     if request.method == 'POST':
         username = request.POST['username']
         password1 = request.POST['password']
         user = authenticate(username=username,password=password1)
+        
         if user is not None:
 
             login(request,user)

@@ -1,3 +1,11 @@
+/* movies css */
+
+body {
+
+    background: rgb(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+}
+
 .navbar {
     background-color: #333;
     overflow: hidden;
