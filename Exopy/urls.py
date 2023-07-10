@@ -23,5 +23,6 @@ urlpatterns = [
     path("",include("accounts.urls")),
     path("movies/",include("movies.urls")),
     path("series/",include("series.urls")),
+    path("logout/",include("accounts.urls")),
     
 ]

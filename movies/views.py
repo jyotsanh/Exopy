@@ -1,18 +1,22 @@
 #   Movies   URL
-
+from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 @login_required
 def movies(request):
     if request.method == 'POST':
         None
     else:
-        if request.user.username is not None:
+        username = request.GET.get('fname')
+        
+        if User.objects.filter(username=username):
 
             # return render(request,"movies.html")
             
-            return render(request,"movies.html")
+            return render(request,"movies.html",{"fname":username})
         else:
-            print("User not authenticated. Redirecting User to login page")
+           
+            messages.error(request,"Please provide a valid username and password")
             return redirect('accounts:dash')
