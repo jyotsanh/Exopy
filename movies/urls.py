@@ -5,4 +5,5 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     # Other URL patterns
     path("",views.movies,name="movies"),
+    path("logout/",views.logout,name='logout'),
 ]

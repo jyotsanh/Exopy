@@ -6,16 +6,28 @@
     <title>Movie</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'movies.css' %}">
+    <style>
+        *{
+    font-family: cursive;
+        }
+        h1{
+        color:deepskyblue
+        }
+    </style>
     
 </head>
 
 <body>
-    <h1>Good morning ! {{ fname }}</h1>
+    
     <div class="navbar">
         <a class="active" href="#movies">Movies</a>
         <a href="/series">TV Shows</a>
         <a href="/my-list">My List</a>
-        <a href="/logout/acc">Log out</a>
+        <a href="/logout">Log out</a>
+        
+    </div>
+    <div class="ko">
+    <h1>Good morning ! {{ fname }}</h1>
     </div>
 
 </body>

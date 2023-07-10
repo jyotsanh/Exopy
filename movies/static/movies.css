@@ -6,6 +6,7 @@ body {
     background-blend-mode: darken;
 }
 
+
 .navbar {
     background-color: #333;
     overflow: hidden;
@@ -28,4 +29,7 @@ body {
 .navbar a.active {
     background-color: #4CAF50;
     color: #fff;
+}
+.ko{
+color: #4CAF50;
 }

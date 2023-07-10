@@ -5,11 +5,13 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.urls import reverse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
+
 from django.core.mail import EmailMessage, send_mail
 from Exopy import settings
+from django.template import loader
 
 def dash(request):
     if request.method == 'POST':
@@ -24,15 +26,12 @@ def dash(request):
             return redirect('/movies/?fname={}'.format(username))
         else:
             messages.error(request, "Invalid username or password")
-            return render(request,"dash.html")
+            template = loader.get_template('dash.html')
+            return HttpResponse(template.render(request))
 
     else:
         return render(request,"dash.html")
     
-def logout_view(request):
-
-    logout(request)
-    return redirect("dash")
 
 # Create your views here.
 def register(request):
