@@ -4,7 +4,7 @@ This is an EXOPY platform that utilizes the TMDB API for movie data and applies 
 
 ## Project Status
 
-**Last Updated: July 5, 2023**
+**Last Updated: July 9, 2023**
 #
 ** status : Incomlete **
 #
