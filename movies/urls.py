@@ -2,8 +2,10 @@ from django.urls import  path
 from . import views
 from django.contrib.auth.decorators import login_required
 
+app_name = 'movies'
+
 urlpatterns = [
     # Other URL patterns
-    path("",views.movies,name="movies"),
+    path("home/",views.home,name="home"),
     path("logout/",views.logout,name='logout'),
 ]

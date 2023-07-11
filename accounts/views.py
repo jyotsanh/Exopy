@@ -23,11 +23,11 @@ def dash(request):
 
             login(request,user)
             
-            return redirect('/movies/?fname={}'.format(username))
+            # return redirect('/movies/?fname={}'.format(username))
+            return redirect('movies:home')
         else:
-            messages.error(request, "Invalid username or password")
-            template = loader.get_template('dash.html')
-            return HttpResponse(template.render(request))
+            messages.error(request, "Invalid username")
+            return render(request,'dash.html')
 
     else:
         return render(request,"dash.html")
@@ -45,30 +45,30 @@ def register(request):
 
         if User.objects.filter(username=username):
             messages.error(request,"username already exist")
-            return redirect('dash')
+            return redirect('/')
         
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email Already Registered!!")
-            return redirect('dash')
+            return redirect('/')
         
         if len(username)>20:
             messages.error(request, "Username must be under 20 charcters!!")
-            return redirect('dash')
+            return redirect('/')
         
         if password1 != password2:
             messages.error(request, "Passwords didn't matched!!")
-            return redirect('dash')
+            return redirect('/')
         
         if not username.isalnum():
             messages.error(request, "Username must be Alpha-Numeric!!")
-            return redirect('dash')
+            return redirect('/')
         myuser = User.objects.create_user(username,email,password1)
         myuser.first_name = firstname
         myuser.last_name = lastname
 
         myuser.save()
 
-        return redirect('dash') 
+        return redirect('/') 
         
     else:
         return render(request,"register.html")

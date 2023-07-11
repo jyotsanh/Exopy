@@ -2,7 +2,7 @@
 
 from django.shortcuts import render,redirect
 
-def dash(request):
+def bash(request):
     if request.method == 'POST':
         None
     else:
