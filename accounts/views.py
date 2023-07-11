@@ -22,7 +22,8 @@ def dash(request):
         if user is not None:
 
             login(request,user)
-            
+            request.session['username'] = username
+            request.session['password'] = password1
             # return redirect('/movies/?fname={}'.format(username))
             return redirect('movies:home')
         else:

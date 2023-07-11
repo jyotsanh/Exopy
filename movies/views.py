@@ -11,8 +11,8 @@ def home(request):
     if request.method == 'POST':
         pass
     else:
-        username = 'lek'
-        password1 =  'lek2'
+        username = request.session.get('username')
+        password1 = request.session.get('password')
         user = authenticate(username=username,password=password1)
         
         if user is not None:
