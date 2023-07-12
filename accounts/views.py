@@ -24,10 +24,9 @@ def dash(request):
             login(request,user)
             request.session['username'] = username
             request.session['password'] = password1
-            # return redirect('/movies/?fname={}'.format(username))
             return redirect('movies:home')
         else:
-            messages.error(request, "Invalid username")
+            messages.error(request, "Invalid username or password")
             return render(request,'dash.html')
 
     else:
