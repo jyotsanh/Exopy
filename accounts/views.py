@@ -30,6 +30,7 @@ def dash(request):
             return render(request,'dash.html')
 
     else:
+        request.session.clear()
         return render(request,"dash.html")
     
 

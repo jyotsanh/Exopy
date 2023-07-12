@@ -7,6 +7,10 @@ from django.contrib import messages
 from django.contrib.auth import logout
 import time
 
+import requests
+
+
+
 def greet():
     current_time = time.localtime()
     hour = current_time.tm_hour
@@ -44,7 +48,11 @@ def home(request):
             messages.error(request,"Please provide a valid username and password")
             return redirect('accounts:dash')
         
+
+
+
 def logout(request):
 
     logout(request)
+    request.session.clear()
     return redirect("accounts:dash")
