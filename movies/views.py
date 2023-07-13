@@ -23,13 +23,25 @@ def greet():
         gre = "Good Evening"
     return gre
 
+base_url = "https://image.tmdb.org/t/p/w500"
+api_key = "201dadbac9d90432aa44713682a9eb60"
+
+def trend():
+    url = f"https://api.themoviedb.org/3/trending/movie/week?api_key={api_key}"
+
+    response = requests.get(url)
+    data = response.json()
+    return data
     
+    
+
+
 @login_required
 def home(request):
     if request.method == 'POST':
         pass
     else:
-
+        
         username = request.session.get('username')
         password1 = request.session.get('password')
         user = authenticate(username=username,password=password1)
@@ -37,8 +49,16 @@ def home(request):
         if user is not None:
             login(request,user)
             # return render(request,"movies.html")
+            datas = trend()
+            movies_title = []
+            movies_url = []
+            for movie in datas["results"]:
+                movies_title.append(movie["title"])
+                movies_url.append(base_url + movie['poster_path'])
             prompt = greet()
             data = {
+                "movie":movies_title,
+                'url':movies_url,
                 "name":username,
                 "greet":prompt
                 }

@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    
+    <img src="{% static 'Logo1.png' %}" alt="Logo">
     <div class="navbar">
         <a class="active" href="#movies">Movies</a>
         <a href="/series">TV Shows</a>
@@ -29,6 +29,19 @@
     <div class="ko">
     <h1>{{ greet }}! {{ name }}</h1>
     </div>
-
+    <div class="list">
+        <h3>List of trending movies from this week</h3>
+        <ul>
+            {% for mov in movie %}
+            <li>{{ mov }}</li>
+            {% endfor %}
+        </ul>
+        <br>
+        <ul>
+            {% for mov in url %}
+            <li><img src="{{ mov }}" alt=""></li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
