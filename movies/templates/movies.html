@@ -31,17 +31,23 @@
     </div>
     <div class="list">
         <h3>List of trending movies from this week</h3>
+       
+        
         <ul>
-            {% for mov in movie %}
-            <li>{{ mov }}</li>
-            {% endfor %}
+            {% load custom_filters %}
+            
+        {% for index in movie|length|num_range %}
+        <li>
+            <h1>{{ movie|get_item:index }}h</h1>
+        </li>
+        <li>
+            <img src="{{ url|get_item:index }}">
+        </li>
+
+        {% endfor %}
         </ul>
         <br>
-        <ul>
-            {% for mov in url %}
-            <li><img src="{{ mov }}" alt=""></li>
-            {% endfor %}
-        </ul>
+       
     </div>
 </body>
 </html>

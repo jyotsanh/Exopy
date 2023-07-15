@@ -60,7 +60,8 @@ def home(request):
                 "movie":movies_title,
                 'url':movies_url,
                 "name":username,
-                "greet":prompt
+                "greet":prompt,
+                'num_range': range(len(movies_title))
                 }
             return render(request,"movies.html",data)
         else:
