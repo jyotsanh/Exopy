@@ -38,7 +38,7 @@
             
         {% for index in movie|length|num_range %}
         <li>
-            <h1>{{ movie|get_item:index }}h</h1>
+            <h1>{{ movie|get_item:index }}</h1>
         </li>
         <li>
             <img src="{{ url|get_item:index }}">
