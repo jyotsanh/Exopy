@@ -6,7 +6,12 @@ This is an EXOPY platform that utilizes the TMDB API for movie data and applies 
 
 **Last Updated: July 9, 2023**
 #
-** status : Incomlete **
+### status : Incomlete 
+* authentication ['completed']  
+* home page  ['progressing']
+* series page ['pending']
+* trending ['pending']
+* deploy movie recommendation system ['pending']
 #
 The project is currently under active development. New features and improvements are being added regularly. Please refer to the changelog below for the latest updates.
 
