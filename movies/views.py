@@ -33,6 +33,12 @@ def trend():
     data = response.json()
     return data
     
+def genre(g_id):
+    url = f'https://api.themoviedb.org/3/discover/movie?api_key={api_key}&with_genres={g_id}'
+    response = requests.get(url)
+    data = response.json()
+    return data
+
 
 @login_required
 def home(request):
@@ -48,15 +54,23 @@ def home(request):
             login(request,user)
             # return render(request,"movies.html")
             datas = trend()
+            genres_data = genre(28)
             movies_title = []
             movies_url = []
             for movie in datas["results"]:
                 movies_title.append(movie["title"])
                 movies_url.append(base_url + movie['poster_path'])
+            g_titles = []
+            g_url = []
+            for movie in genres_data['results']:
+                g_titles.append(movie['title'])
+                g_url.append(base_url+movie['poster_path'])
             prompt = greet()
             data = {
                 "movie":movies_title,
                 'url':movies_url,
+                'g_title':g_titles,
+                'g_url':g_url,
                 "name":username,
                 "greet":prompt,
                 'num_range': range(len(movies_title))
