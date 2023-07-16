@@ -33,15 +33,6 @@ def trend():
     data = response.json()
     return data
     
-def series():
-    url = f'https://api.themoviedb.org/3/trending/tv/day?api_key={api_key}'
-
-    # Send a GET request to the API endpoint
-    response = requests.get(url)
-
-    # Parse the JSON response data
-    data = response.json() 
-    return data
 
 @login_required
 def home(request):
@@ -56,11 +47,11 @@ def home(request):
         if user is not None:
             login(request,user)
             # return render(request,"movies.html")
-            datas = series()
+            datas = trend()
             movies_title = []
             movies_url = []
             for movie in datas["results"]:
-                movies_title.append(movie["name"])
+                movies_title.append(movie["title"])
                 movies_url.append(base_url + movie['poster_path'])
             prompt = greet()
             data = {
