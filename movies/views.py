@@ -95,6 +95,7 @@ def info(request):
 
         
         id = request.GET.get('id')
+    
         movie_url = f'https://api.themoviedb.org/3/movie/{id}?api_key={api_key}'
         movie_response = requests.get(movie_url)
         movie_data = movie_response.json()

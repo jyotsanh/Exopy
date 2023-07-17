@@ -30,16 +30,16 @@
 </head>
 
 <body>
-    <a href="/movies/home"><img src="{% static 'Logo1.png' %}" alt="Logo"></a>
+    <img src="{% static 'Logo1.png' %}" alt="Logo">
     <div class="navbar">
-        <a class="active" href="/movies/home">Movies</a>
+        <a class="active" href="#movies">Movies</a>
         <a href="/series">TV Shows</a>
         <a href="/my-list">My List</a>
         <a href="/logout">Log out</a>
 
     </div>
     {% block content %}
-    
+
     {% endblock %}
 </body>
 

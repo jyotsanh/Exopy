@@ -63,9 +63,9 @@
             {% load custom_filters %}
             {% for index in g_title|length|num_range %}
             <li>
-                    <a href="/movies/info?g_id={{ g_id|get_item:index }}">
-                    <h1>{{ g_title|get_item:index }}</h1>
-                    <img src="{{ g_url|get_item:index }}">
+                    <a href="/movies/info?id={{ g_id|get_item:index }}">
+                        <img src="{{ g_url|get_item:index }}">
+                        <h1>{{ g_title|get_item:index }}</h1>
                 </a>
                 </li>
             {% endfor %}
