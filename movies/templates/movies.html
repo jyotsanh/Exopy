@@ -20,7 +20,7 @@
         }
         li{
         list-style-type: none;
-        margin: 10px;
+        margin: 20px;
         }
 
     </style>
@@ -36,18 +36,23 @@
         <a href="/logout">Log out</a>
         
     </div>
+
     <div class="ko">
     <h1>{{ greet }}! {{ name }}</h1>
     </div>
     <div class="trend">
-        <h3>List of trending movies from this week</h3>
+        <h1>List of trending movies from this week</h1>
         <ul class="movies">
             {% load custom_filters %}
             {% for index in movie|length|num_range %}
-            <li>
-                <img src="{{ url|get_item:index }}">
-                <h2>{{ movie|get_item:index }}</h2>
-            </li>
+            
+                <li>
+                    <a href="/movies/info?id={{ id|get_item:index }}">
+                        <img src="{{ url|get_item:index }}">
+                        <h2>{{ movie|get_item:index }}</h2>
+                    </a>
+                </li>
+           
             {% endfor %}
         </ul>
     </div>
@@ -58,9 +63,11 @@
             {% load custom_filters %}
             {% for index in g_title|length|num_range %}
             <li>
-                <h1>{{ g_title|get_item:index }}</h1>
-                <img src="{{ g_url|get_item:index }}">
-            </li>
+                    <a href="/movies/info?g_id={{ g_id|get_item:index }}">
+                    <h1>{{ g_title|get_item:index }}</h1>
+                    <img src="{{ g_url|get_item:index }}">
+                </a>
+                </li>
             {% endfor %}
 
         </ul>

@@ -9,7 +9,8 @@ import time
 
 import requests
 
-
+base_url = "https://image.tmdb.org/t/p/w500"
+api_key = "201dadbac9d90432aa44713682a9eb60"
 
 def greet():
     current_time = time.localtime()
@@ -23,8 +24,7 @@ def greet():
         gre = "Good Evening"
     return gre
 
-base_url = "https://image.tmdb.org/t/p/w500"
-api_key = "201dadbac9d90432aa44713682a9eb60"
+
 
 def trend():
     url = f"https://api.themoviedb.org/3/trending/movie/week?api_key={api_key}"
@@ -57,13 +57,17 @@ def home(request):
             genres_data = genre(28)
             movies_title = []
             movies_url = []
+            id = []
             for movie in datas["results"]:
                 movies_title.append(movie["title"])
                 movies_url.append(base_url + movie['poster_path'])
+                id.append(movie['id'])
             g_titles = []
             g_url = []
+            g_id = []
             for movie in genres_data['results']:
                 g_titles.append(movie['title'])
+                g_id.append(movie['id'])
                 g_url.append(base_url+movie['poster_path'])
             prompt = greet()
             data = {
@@ -71,6 +75,8 @@ def home(request):
                 'url':movies_url,
                 'g_title':g_titles,
                 'g_url':g_url,
+                'id':id,
+                'g_id':g_id,
                 "name":username,
                 "greet":prompt,
                 'num_range': range(len(movies_title))
@@ -82,7 +88,43 @@ def home(request):
             return redirect('accounts:dash')
         
 
+def info(request):
+    if request.method == 'POST':
+        None
+    else:
 
+        
+        id = request.GET.get('id')
+        movie_url = f'https://api.themoviedb.org/3/movie/{id}?api_key={api_key}'
+        movie_response = requests.get(movie_url)
+        movie_data = movie_response.json()
+
+        # Extract the desired information from the movie_data object
+        movie_name = movie_data['title']
+        posture_url = base_url + movie_data['poster_path']
+        watch_time = movie_data['runtime']
+        rating = movie_data['vote_average']
+        description = movie_data['overview']
+        genres = [genre['name'] for genre in movie_data['genres']]
+        genres = ', '.join(genres)
+        credits_url = f'https://api.themoviedb.org/3/movie/{id}/credits?api_key={api_key}'
+        credits_response = requests.get(credits_url)
+        credits_data = credits_response.json()
+        cast = [actor['name'] for actor in credits_data['cast']]
+        crew = [member['name'] for member in credits_data['crew']]
+        cast = ', '.join(cast)
+        crew = ', '.join(crew)
+        data = { 
+            'title':movie_name,
+            'url':posture_url,
+            'watch_time':watch_time,
+            'rating':rating,
+            'description':description,
+            'genres':genres,
+            'cast':cast,
+            'crew':crew,
+             }
+    return render(request,"info.html",data)
 
 def logout(request):
 

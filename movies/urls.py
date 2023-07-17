@@ -8,4 +8,5 @@ urlpatterns = [
     # Other URL patterns
     path("home/",views.home,name="home"),
     path("logout/",views.logout,name='logout'),
+    path("info/",views.info,name="info")
 ]
