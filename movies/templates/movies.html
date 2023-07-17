@@ -13,12 +13,15 @@
         h1{
         color:whitesmoke
         }
-        .trend {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-gap: 20px;
+        
+        ul{
+        display: flex;
+        flex-wrap: wrap;
         }
-
+        li{
+        list-style-type: none;
+        margin: 10px;
+        }
 
     </style>
     
@@ -42,15 +45,15 @@
             {% load custom_filters %}
             {% for index in movie|length|num_range %}
             <li>
-                <h1>{{ movie|get_item:index }}</h1>
                 <img src="{{ url|get_item:index }}">
+                <h2>{{ movie|get_item:index }}</h2>
             </li>
             {% endfor %}
         </ul>
     </div>
 
     <div class="sci">
-        <h3>Sci-Fi Movies :</h3>
+        <h1>Sci-Fi Movies :</h1>
         <ul class="movies">
             {% load custom_filters %}
             {% for index in g_title|length|num_range %}

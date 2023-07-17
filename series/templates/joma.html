@@ -16,33 +16,12 @@
             color: whitesmoke
         }
 
-        .list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-gap: 20px;
+        ul{
+        display: flex;
+        flex-wrap: wrap;
         }
-
-        .movies {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .movies li {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .movies li h1 {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .movies li img {
-            width: 100%;
-            height: auto;
+        li{
+        list-style-type: none;
         }
     </style>
 
@@ -62,13 +41,13 @@
         <h1>{{ greet }}! {{ name }}</h1>
     </div>
     <div class="list">
-        <h3>List of trending Series from this week</h3>
+        <h1>List of trending Series from this week</h1>
         <ul class="movies">
             {% load custom_filters %}
             {% for index in movie|length|num_range %}
             <li>
-                <h1>{{ movie|get_item:index }}</h1>
                 <img src="{{ url|get_item:index }}">
+                <h2>{{ movie|get_item:index }}</h2>
             </li>
             {% endfor %}
         </ul>
