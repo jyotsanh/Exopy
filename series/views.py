@@ -48,12 +48,15 @@ def bash(request):
         if user is not None:
             login(request,user)
             # return render(request,"movies.html")
+           
             datas = series()
             movies_title = []
             movies_url = []
+            id=[]
             for movie in datas["results"]:
                 movies_title.append(movie["name"])
                 movies_url.append(base_url + movie['poster_path'])
+                id.append(movie['id'])
             prompt = greet()
             data = {
                 "movie":movies_title,

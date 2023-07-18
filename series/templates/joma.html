@@ -22,6 +22,7 @@
         }
         li{
         list-style-type: none;
+        margin: 20px;
         }
     </style>
 
@@ -31,7 +32,7 @@
     <img src="{% static 'Logo1.png' %}" alt="Logo">
     <div class="navbar">
         <a href="/movies/home">Movies</a>
-        <a class="active" href="#series">TV Shows</a>
+        <a class="active" href="/series">TV Shows</a>
         
         <a href="/my-list">My List</a>
         <a href="/logout">Log out</a>
@@ -45,10 +46,12 @@
         <ul class="movies">
             {% load custom_filters %}
             {% for index in movie|length|num_range %}
-            <li>
-                <img src="{{ url|get_item:index }}">
-                <h2>{{ movie|get_item:index }}</h2>
-            </li>
+            <a href="./info.html">
+                <li>
+                    <img src="{{ url|get_item:index }}">
+                    <h2>{{ movie|get_item:index }}</h2>
+                </li>
+            </a>
             {% endfor %}
         </ul>
     </div>

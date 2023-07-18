@@ -53,6 +53,8 @@ def home(request):
         if user is not None:
             login(request,user)
             # return render(request,"movies.html")
+            request.session['username'] = username
+            request.session['password'] = password1
             datas = trend()
             genres_data = genre(28)
             movies_title = []
