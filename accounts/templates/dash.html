@@ -24,7 +24,7 @@
             <ul class="messages">
                 {% for message in messages %}
                 <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;">{{ message }}</li>
-                    {% endfor %}
+                {% endfor %}
             </ul>
             {% endif %}
             <input type="username" placeholder="Username" required name="username">
