@@ -62,6 +62,7 @@ def bash(request):
                 "movie":movies_title,
                 'url':movies_url,
                 "name":username,
+                "id":id,
                 "greet":prompt,
                 'num_range': range(len(movies_title))
                 }
@@ -73,4 +74,48 @@ def bash(request):
         
 
 
+def info(request):
+    if request.method == "POST":
+        None
+    else:
+        id = request.GET.get('id')
+        tv_url = f'https://api.themoviedb.org/3/tv/{id}?api_key={api_key}'
+        tv_response = requests.get(tv_url)
+        tv_data = tv_response.json()
+
+        name = tv_data['name']
+        tv_url = base_url+tv_data['poster_path']
+        description = tv_data['overview']
+        try:
+            tv_time = tv_data['episode_run_time'][0]
+        except:
+            tv_time = 'not fixed'
+        rating = tv_data['vote_average']
+        genres = [genre['name'] for genre in tv_data['genres']]
+        genres = ', '.join(genres)
+        url = f"https://api.themoviedb.org/3/tv/{id}?api_key={api_key}&append_to_response=credits"
+        response = requests.get(url)
+        tv_show_data = response.json()
+
+        director = ""
+        cast = []
+        crew = tv_data.get('credits', {}).get('crew', [])
+    
+    # Find the director's name based on their job
+        director = next((person['name'] for person in crew if person['job'] == 'Director'), None)
+
+        for cast_member in tv_show_data['credits']['cast'][:3]:
+            cast.append(cast_member['name'])
+        cast = ", ".join(cast)
+        data = {
+           'name':name,
+           'url':tv_url,
+           'time':tv_time,
+           'dir':director,
+           'cast':cast,
+           'rating':rating,
+           'desc':description,
+           'genre':genres 
+            }
+        return render(request,"info_series.html",data)
         

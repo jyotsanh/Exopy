@@ -46,7 +46,7 @@
         <ul class="movies">
             {% load custom_filters %}
             {% for index in movie|length|num_range %}
-            <a href="./info.html">
+            <a href="/series/info?id={{ id|get_item:index }}">
                 <li>
                     <img src="{{ url|get_item:index }}">
                     <h2>{{ movie|get_item:index }}</h2>
