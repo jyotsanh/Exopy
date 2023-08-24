@@ -1,4 +1,10 @@
 /* movies css */
+*{
+    font-family: cursive;
+    padding: 0;
+    margin: 0;
+        }
+        
 
 body {
 
@@ -7,30 +13,19 @@ body {
 }
 
 
-.navbar {
-    background-color: #333;
-    overflow: hidden;
-}
-
-.navbar a {
-    float: left;
-    color: #fff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-.navbar a:hover {
-    background-color: #ddd;
-    color: #333;
-}
-
-.navbar a.active {
-    background-color: #4CAF50;
-    color: #fff;
-}
 .ko{
-color: #4CAF50;
+color: beige;
 }
+h1{
+    color:whitesmoke
+    }
+    
+    ul{
+    display: flex;
+    flex-wrap: wrap;
+    }
+    li{
+    list-style-type: none;
+    margin: 20px;
+    }
 
