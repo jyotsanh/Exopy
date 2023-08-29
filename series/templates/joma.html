@@ -8,11 +8,15 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'movies.css' %}">
     <style>
+        /* navigation and image css  */
+        body{
+            background-color: rgb(34, 32, 32);
+        }
        header {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
-    padding: 20px; }
+    padding: 10px; }
 
 
 .logo img {
@@ -33,66 +37,61 @@ nav ul li {
 
 nav ul li a {
     float: left;
-    color: #fff;
+    color: rgb(100, 200, 100);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 26px;
+    font-size: 28px;
     cursor: pointer;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    font-family: 'Roboto Slab', serif;
+
    
 }
 
 nav ul li  a:hover {
-    background-color: #7dff78;
+    /* background-color: #7dff78; */
     /* color: #333; */
-    border-radius: 15px;
+    /* border-radius: 15px; */
+    opacity: 0.5;
+    transition: transform 0.3s;
 }
-.ko{
-    /* font-family: 'Times New Roman', Times, serif; */
+/* greeting css  */
+/* .ko{
+   
     font-size: 30px;
     margin-top: 15px;
     
     
-}
-.ko h1{ font-family: 'Roboto Slab', serif;
+} */
 
-    color: #7dff78;
-    text-align: center;
-    text-decoration: underline;
-    text-decoration-color: black;
-color: #7dff78;
-}
+
 .trend h1{
-    padding: 50px;
+    padding: 20px;
     /* margin-bottom: 5px; */
     font-family: 'Roboto Slab', serif;
-    color: #7dff78;
+    color: rgb(100, 200, 100);
+    font-size: 50px;
+    text-align: center;
 
 }
-/* .movie img{
-    width: 250px;
-    height: 250px;
-}
-.movie img h2{
-    display: inline-block;
-} */
-/* Add this CSS code to your stylesheet */
+
 /* Style for the movie image */
 .movie-image {
-    width: 300px; /* Change this to your desired width */
-    height: 500px; /* Change this to your desired height */
+    width: 300px; 
+    height: 500px; 
     padding: 10px;
     margin: 10px;
     align-items: space-between;
     cursor: pointer;
+    border-radius: 30px;
 
 }
 
-/* Style for the movie title */
+/* style for tile  */
 .movie-title {
-    font-size: 18px; /* Change this to your desired font size */
-    color: #333; /* You can also set other text properties here */
+    font-size: 18px; 
+    color:rgb(100, 200, 100);
     text-align: center;
     padding: 10px;
     margin: 10px;
@@ -109,7 +108,9 @@ color: #7dff78;
     transition: transform 0.3s;
 }
 .movie-title:hover{
-    color: #7dff78;
+    /* color: #7dff78; */
+    opacity: 0.5;
+    transition: transform 0.3s;
 }
 
     </style>
@@ -117,34 +118,29 @@ color: #7dff78;
 </head>
 
 <body>
-    <!-- <img src="{% static 'Logo1.png' %}" alt="Logo">
-    <div class="navbar">
-        <a href="/movies/home">Movies</a>
-        <a class="active" href="/series">TV Shows</a>
-        
-        <a href="/my-list">My List</a>
-        <a href="/logout">Log out</a>
-
-    </div> -->
+     <!-- Navigation  -->
     <header>
         <div class="logo">
             <img src="{% static 'Logo1.png' %}" alt="" >
         </div>
         <nav>
             <ul>
-                <li><a href="#movies">Movies</a></li>
+                <li><a href="/movies/home">Movies</a></li>
                 <li><a href="/series">Tv Shows</a></li>
                 <li><a href="/my-list">My List</a></li>
                 <li><a href="/logout">Log out</a></li>
             </ul>
         </nav>
     </header>
-    <div class="ko">
+    <!-- greeting Name  -->
+    <!-- <div class="ko">
         <h1>{{ greet }}! {{ name }}</h1>
+    </div> -->
+    <!-- Trending movie image name  -->
+    <div class="trend">
+        <h1> Trending Movies</h1>
     </div>
-    <div class="list">
-        <h1>List of trending Series from this week</h1>
-        <ul class="movies">
+        <ul >
             {% load custom_filters %}
             {% for index in movie|length|num_range %}
             <a href="/series/info?id={{ id|get_item:index }}">
@@ -155,7 +151,7 @@ color: #7dff78;
             </a>
             {% endfor %}
         </ul>
-    </div>
+    
 </body>
 
 </html>
