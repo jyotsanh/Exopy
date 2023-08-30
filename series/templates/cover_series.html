@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="{% static 'movies.css' %}">
     <style>
         
-
+body{
+    background-color: rgb(34, 32, 32);
+}
 header {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
+
     padding: 20px; }
 
 
@@ -35,21 +38,25 @@ nav ul li {
 
 nav ul li a {
     float: left;
-    color: #000000;
+    color: #7dff78;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 28px;
     cursor: pointer;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    font-family: 'Roboto Slab', serif;
+
     
    
 }
 
 nav ul li  a:hover {
-    background-color: #7dff78;
+    /* background-color: #7dff78; */
     /* color: #333; */
-    border-radius: 15px;
+    /* border-radius: 15px; */
+    opacity: 0.5;
+    transition: transform 0.3s;
 }
     </style>
 
