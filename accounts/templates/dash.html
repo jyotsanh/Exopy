@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exopy Sign in Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="logo">
+        
+        <img src="{% static 'Logo1.png' %}" alt="Logo">
+    </div>
+    
+    <div class="container" >
+        <h1>Sign In</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <input type="username" placeholder="Username" required name="username">
+            <input type="password" placeholder="Password" required name="password">
+            <input type="submit" value="Sign In" required name="submit" href="">
+            <input type="checkbox">
+            <label>
+                Remember me
+            </label>
+            <a href="#">Need Help</a>
+            <!-- <p>Username</p>
+            <input type="text" name="" placeholder="Enter User-name">
+            <p>Password
+            </p>
+            <input type="Password" name="" placeholder="Enter Password"><br>
+            <input type="submit" name="" value="login"><br>
+            <a href="a">Forget password?</a><br> -->
+        </form>
+        <div class="content">
+            <h2>New to Exopy <a href="/register">Sign up now </a></h2>
+        </div>
+    </div>
+
+</body>
+
+</html>

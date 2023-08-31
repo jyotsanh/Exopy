@@ -1,0 +1,84 @@
+{% extends "cover.html" %} 
+{% block title %} 
+{{title}}
+ {% endblock %} 
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<style>
+     h1{
+        text-align: center;
+        font-family: 'Roboto Slab', serif;
+        font-size: 62px;
+        color: #7dff78;
+        margin-bottom: 10px;
+    }
+    .movie-details {
+    display: flex;
+    align-items: center; /* Vertically center-align content */
+    gap: 20px; /* Adjust the gap between image and text */
+    font-family: 'Roboto Slab', serif;
+}
+
+.movie-image {
+    width: 500px; /* Set a maximum width for the image */
+    height: 800px;
+    padding: 60px;
+    margin: 20px;
+    border-radius: 30px;
+}
+
+.text-details {
+    flex: 1; /* Allow the text to expand and take remaining space */
+    color: white;
+}
+
+</style>
+<h1>{{ title }}</h1>
+
+<div class="movie-details">
+    <img src="{{url}}" alt="{{title}} posture" class="movie-image">
+    <div class="text-details">
+        <!-- <h1>{{ title }}</h1> -->
+        <h2>Ratings: {{ rating }}</h2>
+        <h2>Watch time: {{ watch_time }} minutes</h2>
+        <h2>Description : {{ description }}</h2>
+        <!-- <h2>Description: <span id="movie-description">{{ desc }}</span>
+            <a href="javascript:void(0);" onclick="toggleDescription()">See More</a>
+        </h2> -->
+        <p>Genres : {{genres}}</p>
+        <p>Cast : {{ cast }}</p>
+        <p>Crew : {{ crew }}</p>
+        <!-- <h2>Cast: <span id="movie-cast">{{ cast }}</span></h2>
+        <a href="javascript:void(0);" onclick="toggleCast()">See More</a> -->
+    </div>
+</div>
+<!-- <script>
+    var isDescriptionExpanded = false;
+    var descriptionElement = document.getElementById("movie-description");
+
+    function toggleDescription() {
+        if (isDescriptionExpanded) {
+            descriptionElement.style.maxHeight = "100px"; // Adjust the height as needed
+        } else {
+            descriptionElement.style.maxHeight = "none"; // Expand to full height
+        }
+        isDescriptionExpanded = !isDescriptionExpanded;
+    } -->
+<!-- </script> -->
+<!-- <script>
+    var isCastExpanded = false;
+    var castElement = document.getElementById("movie-cast");
+
+    function toggleCast() {
+        if (isCastExpanded) {
+            castElement.style.maxHeight = "20px"; // Adjust the height as needed
+        } else {
+            castElement.style.maxHeight = "none"; // Expand to full height
+        }
+        isCastExpanded = !isCastExpanded;
+    }
+</script> -->
+
+
+{% endblock %}
