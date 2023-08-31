@@ -1,57 +1,182 @@
 {% extends "cover.html" %} 
-{% block title %} 
-{{title}}
+{% block title %}
+ {{title}} 
  {% endblock %} 
-
-{% block content %}
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+ {% block content %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
+  rel="stylesheet"
+/>
 <style>
-     h1{
-        text-align: center;
-        font-family: 'Roboto Slab', serif;
-        font-size: 62px;
-        color: #7dff78;
-        margin-bottom: 10px;
-    }
-    .movie-details {
+  h1 {
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-size: 62px;
+    color: #7dff78;
+    margin-bottom: 10px;
+  }
+  .movie-details {
     display: flex;
     align-items: center; /* Vertically center-align content */
     gap: 20px; /* Adjust the gap between image and text */
-    font-family: 'Roboto Slab', serif;
-}
+    font-family: "Roboto Slab", serif;
+  }
 
-.movie-image {
+  .movie-image {
     width: 500px; /* Set a maximum width for the image */
     height: 800px;
     padding: 60px;
     margin: 20px;
     border-radius: 30px;
-}
+  }
 
-.text-details {
+  .text-details {
     flex: 1; /* Allow the text to expand and take remaining space */
     color: white;
-}
+  }
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    font-family: "Roboto Slab", serif;
+    background-color: rgb(34, 32, 32);
+  }
+  /* Navigation and logo */
 
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo img {
+    max-width: 200px;
+    box-shadow: black;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+
+  nav ul li a {
+    float: left;
+    /* color: #edf15d; */
+    color: rgb(100, 200, 100);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-family: "Roboto Slab", serif;
+  }
+
+  nav ul li a:hover {
+    opacity: 0.4;
+    transition: transform 0.3s;
+  }
+  /* Greeting css  */
+  .ko {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  /* Trending css  */
+  .trend h1 {
+    padding: 20px;
+    text-align: center;
+
+    font-family: "Roboto Slab", serif;
+    /* color: #edf15d; */
+    color: rgb(100, 200, 100);
+    font-size: 46px;
+  }
+
+  /* Style for the movie image and title */
+  .movie-image {
+    width: 300px;
+    height: 500px;
+    padding: 10px;
+    margin: 10px;
+    align-items: space-between;
+    cursor: pointer;
+    /* border: ""; */
+    border-radius: 30px;
+  }
+
+  .movie-title {
+    font-size: 18px;
+    /* color: #edf15d;  */
+    color: rgb(100, 200, 100);
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    font-size: 24px;
+    font-family: "Roboto Slab", serif;
+    width: 300px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: black;
+  }
+  .movie-image:hover {
+    opacity: 0.5;
+    transition: transform 0.3s;
+  }
+  .movie-title:hover {
+    opacity: 0.4;
+    transition: transform 0.3s;
+  }
+  .sub-options {
+    display: none;
+    /* background-color: #b0afaf; */
+  }
+
+  .sub-options a {
+    /* color:#edf15d ; */
+    color: rgb(100, 200, 100);
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-family: "Roboto Slab", serif;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .sub-options a:hover {
+    /* color: #333; */
+    /* border-radius: 15px; */
+    opacity: 0.5;
+    transition: transform 0.3s;
+  }
 </style>
 <h1>{{ title }}</h1>
 
 <div class="movie-details">
-    <img src="{{url}}" alt="{{title}} posture" class="movie-image">
-    <div class="text-details">
-        <!-- <h1>{{ title }}</h1> -->
-        <h2>Ratings: {{ rating }}</h2>
-        <h2>Watch time: {{ watch_time }} minutes</h2>
-        <h2>Description : {{ description }}</h2>
-        <!-- <h2>Description: <span id="movie-description">{{ desc }}</span>
+  <img src="{{url}}" alt="{{title}} posture" class="movie-image" />
+  <div class="text-details">
+    <!-- <h1>{{ title }}</h1> -->
+    <h2>Ratings: {{ rating }}</h2>
+    <h2>Watch time: {{ watch_time }} minutes</h2>
+    <h2>Description : {{ description }}</h2>
+    <!-- <h2>Description: <span id="movie-description">{{ desc }}</span>
             <a href="javascript:void(0);" onclick="toggleDescription()">See More</a>
         </h2> -->
-        <p>Genres : {{genres}}</p>
-        <p>Cast : {{ cast }}</p>
-        <p>Crew : {{ crew }}</p>
-        <!-- <h2>Cast: <span id="movie-cast">{{ cast }}</span></h2>
+    <p>Genres : {{genres}}</p>
+    <p>Cast : {{ cast }}</p>
+    <p>Crew : {{ crew }}</p>
+    <!-- <h2>Cast: <span id="movie-cast">{{ cast }}</span></h2>
         <a href="javascript:void(0);" onclick="toggleCast()">See More</a> -->
-    </div>
+  </div>
 </div>
 <!-- <script>
     var isDescriptionExpanded = false;
@@ -79,6 +204,5 @@
         isCastExpanded = !isCastExpanded;
     }
 </script> -->
-
 
 {% endblock %}

@@ -56,31 +56,50 @@ def home(request):
             request.session['username'] = username
             request.session['password'] = password1
             datas = trend()
-            genres_data = genre(28)
+            
+            
+            # -----------------------------------------------------------------
             movies_title = []
             movies_url = []
             id = []
+            
             for movie in datas["results"]:
                 movies_title.append(movie["title"])
                 movies_url.append(base_url + movie['poster_path'])
                 id.append(movie['id'])
-            g_titles = []
-            g_url = []
-            g_id = []
-            for movie in genres_data['results']:
-                g_titles.append(movie['title'])
-                g_id.append(movie['id'])
-                g_url.append(base_url+movie['poster_path'])
-            prompt = greet()
+            # ------------------------------------------------------------------
+            action_data = genre(28)
+            # action
+            a_titles = []
+            a_url = []
+            a_id = []
+            for movie in action_data['results']:
+                a_titles.append(movie['title'])
+                a_id.append(movie['id'])
+                a_url.append(base_url+movie['poster_path'])
+            
+            # ----------------------------------------------------------------------
+            # fantasy
+            Fantsay_data = genre(14)
+            f_titles = []
+            f_url = []
+            f_id = []
+            for movie in Fantsay_data['results']:
+                f_titles.append(movie['title'])
+                f_id.append(movie['id'])
+                f_url.append(base_url+movie['poster_path'])
             data = {
                 "movie":movies_title,
                 'url':movies_url,
-                'g_title':g_titles,
-                'g_url':g_url,
+                'g_title':a_titles,
+                'g_url':a_url,
+                'g_id':a_id,
                 'id':id,
-                'g_id':g_id,
+                
                 "name":username,
-                "greet":prompt,
+                'f_title':f_titles,
+                'f_url':f_url,
+                'f_id':f_id,
                 'num_range': range(len(movies_title))
                 }
             return render(request,"movies.html",data)
@@ -92,7 +111,7 @@ def home(request):
 
 def info(request):
     if request.method == 'POST':
-        None
+        pass
     else:
 
         
@@ -128,6 +147,39 @@ def info(request):
             'crew':crew,
              }
     return render(request,"info.html",data)
+
+
+def genre_movies(request):
+    if request.method == 'POST':
+        # Handle POST request logic if needed
+        pass
+    else:
+        genre_id = request.GET.get('gid')
+        
+        data = genre(genre_id)
+        genres = request.GET.get('name')
+        g_title = []
+        g_url = []
+        g_id = []
+        for movie in data['results']:
+            g_title.append(movie['title'])
+            g_id.append(movie['id'])
+            g_url.append(base_url+movie['poster_path'])
+        data = {
+                "movie":g_title,
+                'url':g_url,
+                'genre':genres,
+                
+                
+                "g_id":g_id,
+                'num_range': range(len(g_title))
+                }
+        return render(request,"genre.html",data)
+
+
+# views.py
+
+
 
 def logout(request):
 
