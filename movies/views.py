@@ -127,6 +127,7 @@ def info(request):
             'cast':cast,
             'crew':crew,
              }
+        
     return render(request,"info.html",data)
 
 def logout(request):
