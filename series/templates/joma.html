@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'movies.css' %}">
+    <style>
+        /* navigation and image css  */
+        body{
+            background-color: rgb(34, 32, 32);
+        }
+       header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px; }
+
+
+.logo img {
+    max-width: 200px; 
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+
+nav ul li {
+    display: inline; 
+    margin-right: 20px; 
+   
+}
+
+
+nav ul li a {
+    float: left;
+    color: rgb(100, 200, 100);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-family: 'Roboto Slab', serif;
+
+   
+}
+
+nav ul li  a:hover {
+    /* background-color: #7dff78; */
+    /* color: #333; */
+    /* border-radius: 15px; */
+    opacity: 0.5;
+    transition: transform 0.3s;
+}
+/* greeting css  */
+/* .ko{
+   
+    font-size: 30px;
+    margin-top: 15px;
+    
+    
+} */
+
+
+.trend h1{
+    padding: 20px;
+    /* margin-bottom: 5px; */
+    font-family: 'Roboto Slab', serif;
+    color: rgb(100, 200, 100);
+    font-size: 50px;
+    text-align: center;
+
+}
+
+/* Style for the movie image */
+.movie-image {
+    width: 300px; 
+    height: 500px; 
+    padding: 10px;
+    margin: 10px;
+    align-items: space-between;
+    cursor: pointer;
+    border-radius: 30px;
+
+}
+
+/* style for tile  */
+.movie-title {
+    font-size: 18px; 
+    color:rgb(100, 200, 100);
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    font-size: 24px;
+    font-family: 'Roboto Slab', serif ;
+    width: 300px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+.movie-image:hover{
+    opacity: 0.5;
+    transition: transform 0.3s;
+}
+.movie-title:hover{
+    /* color: #7dff78; */
+    opacity: 0.5;
+    transition: transform 0.3s;
+}
+
+    </style>
+
+</head>
+
+<body>
+     <!-- Navigation  -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'Logo1.png' %}" alt="" >
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/movies/home">Movies</a></li>
+                <li><a href="/series">Tv Shows</a></li>
+                <li><a href="/my-list">My List</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- greeting Name  -->
+    <!-- <div class="ko">
+        <h1>{{ greet }}! {{ name }}</h1>
+    </div> -->
+    <!-- Trending movie image name  -->
+    <div class="trend">
+        <h1> Trending Movies</h1>
+    </div>
+        <ul >
+            {% load custom_filters %}
+            {% for index in movie|length|num_range %}
+            <a href="/series/info?id={{ id|get_item:index }}">
+                <li>
+                    <img src="{{ url|get_item:index }}" class="movie-image" >
+                    <h2 class="movie-title">{{ movie|get_item:index }}</h2>
+                </li>
+            </a>
+            {% endfor %}
+        </ul>
+    
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{% extends "cover_series.html" %} {% block title %}
+ {{title}}
+ {% endblock %} 
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<style>
+    /* heading part  */
+    h1{
+        text-align: center;
+        font-family: 'Roboto Slab', serif;
+        font-size: 62px;
+        color: #7dff78;
+        margin-bottom: 10px;
+    }
+    /* Movie details and image  */
+    .movie-details {
+    display: flex;
+    align-items: center; 
+    font-family: 'Roboto Slab', serif;
+    /* border-radius: 30px; */
+}
+
+.movie-image {
+    width: 500px; 
+    height: 800px;
+    padding: 60px;
+    margin-right: 20px; 
+    /* border-radius: 30px; */
+    border: "";
+    border-radius: 30px;
+}
+
+.movie-text {
+    flex: 1;
+    color: white; 
+}
+
+</style>
+
+
+<!-- Name of movie  -->
+<h1>Name : {{ name }}</h1>
+          <!-- Movie Details  -->
+<div class="movie-details">
+    <img src="{{url}}" alt="{{title}} posture" class="movie-image">
+    <div class="movie-text">
+        <h2>Ratings: {{ rating }}</h2>
+        <h2>Watch time: {{ time }} minutes</h2>
+        <h2>Description: {{ desc }}</h2>
+        
+        <h2>Genres: {{genre}}</h2>
+        <h2>Director: {{ dir }}</h2>
+        <h2>Cast: {{ cast }}</h2>
+    </div>
+</div>
+
+{% endblock %}
