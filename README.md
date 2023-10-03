@@ -16,6 +16,13 @@ This is an EXOPY platform that utilizes the TMDB API for movie data and applies 
 #
 The project is currently under active development. New features and improvements are being added regularly. Please refer to the changelog below for the latest updates.
 
+## Some ScreenShots:
+![Log-in](images/Log_in.png)
+![Homepage](images/home_page.png)
+![Series Page](images/Tv_show.png)
+
+
+
 ## Features
 
 - User authentication and registration
@@ -65,6 +72,7 @@ python TMDB_API_KEY = 'your-api-key'
 ```
 
 8. Run the development server:
+
 ```
    python manage.py runserver
 ```
