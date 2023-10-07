@@ -1,4 +1,0 @@
-Django                4.2.2
-django-cors-headers   4.1.0
-djangorestframework   3.14.0
-pip                   23.1.2
