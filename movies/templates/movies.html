@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+
+      {% comment %} 
+      sje is i don't killl bro killllll
+      it's notgppd fuck oggggg understandf you dickkkkk
+       {% endcomment %}
+    />
+    <title>Movie</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'movies.css' %}" />
+    <style>
+      /* body  */
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        font-family: "Roboto Slab", serif;
+        background-color: rgb(34, 32, 32);
+      }
+      /* Navigation and logo */
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .logo img {
+        max-width: 200px;
+        box-shadow: black;
+      }
+
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin-right: 20px;
+      }
+
+      nav ul li a {
+        float: left;
+        /* color: #edf15d; */
+        color: rgb(100, 200, 100);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 28px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        font-family: "Roboto Slab", serif;
+      }
+
+      nav ul li a:hover {
+        opacity: 0.4;
+        transition: transform 0.3s;
+      }
+      /* Greeting css  */
+      .ko {
+        font-size: 22px;
+        margin-top: 10px;
+      }
+
+      /* Trending css  */
+      .trend h1 {
+        padding: 20px;
+        text-align: center;
+
+        font-family: "Roboto Slab", serif;
+        /* color: #edf15d; */
+        color: rgb(100, 200, 100);
+        font-size: 46px;
+      }
+
+      /* Style for the movie image and title */
+      .movie-image {
+        width: 300px;
+        height: 500px;
+        padding: 10px;
+        margin: 10px;
+        align-items: space-between;
+        cursor: pointer;
+        /* border: ""; */
+        border-radius: 30px;
+      }
+
+      .movie-title {
+        font-size: 18px;
+        /* color: #edf15d;  */
+        color: rgb(100, 200, 100);
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        font-size: 24px;
+        font-family: "Roboto Slab", serif;
+        width: 300px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-color: black;
+      }
+      .movie-image:hover {
+        opacity: 0.5;
+        transition: transform 0.3s;
+      }
+      .movie-title:hover {
+        opacity: 0.4;
+        transition: transform 0.3s;
+      }
+      .sub-options {
+        display: none;
+        /* background-color: #b0afaf; */
+      }
+
+      .sub-options a {
+        /* color:#edf15d ; */
+        color: rgb(100, 200, 100);
+        text-align: center;
+        padding: 10px;
+        text-decoration: none;
+        display: block;
+        font-family: "Roboto Slab", serif;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .sub-options a:hover {
+        /* color: #333; */
+        /* border-radius: 15px; */
+        opacity: 0.5;
+        transition: transform 0.3s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation a d logo  -->
+    <header>
+      <div class="logo">
+        <img src="{% static 'Logo1.png' %}" alt="" />
+      </div>
+      <nav>
+        <ul>
+          <!-- <input type="text"> -->
+          <!-- <li><a href="#movies">Movies</a></li> -->
+          <li>
+            <a href="/movies/home" onclick="toggleOptions('movies')">Movies</a>
+          </li>
+          <div id="movies-options" class="sub-options">
+            <a href="/movies/genre?gid=28?&name=Action">Action</a>
+            <a href="/movies/genre?gid=35?&name=Comedy">Comedy</a>
+            <a href="/movies/genre?gid=18?&name=Comedy">Drama</a>
+            <a href="/movies/genre?gid=878?&name=Sci-Fi">Sci-Fi</a>
+          </div>
+          <li><a href="/series">Tv Shows</a></li>
+          <li><a href="/my-list">My List</a></li>
+          <li><a href="/logout">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Greeting  -->
+    <!-- <div class="ko">
+    <h1>{{ greet }} ! {{ name }}</h1>
+    </div> -->
+    <!-- movie  -->
+
+    <div class="trend">
+      <h1>Trending Movies</h1>
+    </div>
+
+    <div class="movies">
+      <ul>
+        {% load custom_filters %} {% for index in movie|length|num_range %}
+
+        <li>
+          <a href="/movies/info?id={{ id|get_item:index }}">
+            <img src="{{ url|get_item:index }}" class="movie-image" />
+            <h2 class="movie-title">{{ movie|get_item:index }}</h2>
+          </a>
+        </li>
+
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="trend">
+      <h1>Sci-Fi Movies :</h1>
+    </div>
+    <ul class="movies">
+      {% load custom_filters %} {% for index in g_title|length|num_range %}
+      <li>
+        <a href="/movies/genre?id={{ g_id|get_item:index }}">
+          <img src="{{ g_url|get_item:index }}" class="movie-image" />
+          <h2 class="movie-title">{{ g_title|get_item:index }}</h2>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="trend">
+      <h1>Fantasy Movies :</h1>
+    </div>
+    <ul class="movies">
+      {% load custom_filters %} {% for index in f_title|length|num_range %}
+      <li>
+        <a href="/movies/info?id={{ f_id|get_item:index }}">
+          <img src="{{ f_url|get_item:index }}" class="movie-image" />
+          <h2 class="movie-title">{{ f_title|get_item:index }}</h2>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <script>
+      function toggleOptions(option) {
+        var options = document.getElementById(option + "-options");
+        if (options.style.display === "block") {
+          options.style.display = "none";
+        } else {
+          options.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
+<!-- exo\Scripts\activate
+python .\manage.py runserver -->

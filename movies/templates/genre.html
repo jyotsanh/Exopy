@@ -1,0 +1,26 @@
+{% extends "cover.html" %} 
+{% block title %} 
+{{genre}} 
+{% endblock %} 
+{% block content %}
+
+<div class="trend">
+  <h1>{{genre}} Movies</h1>
+</div>
+
+<div class="movies">
+  <ul>
+    {% load custom_filters %} {% for index in movie|length|num_range %}
+
+    <li>
+      <a href="/movies/info?id={{g_id|get_item:index }}">
+        <img src="{{ url|get_item:index }}" class="movie-image" />
+        <h2 class="movie-title">{{ movie|get_item:index }}</h2>
+      </a>
+    </li>
+
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
