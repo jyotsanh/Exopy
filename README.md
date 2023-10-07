@@ -20,6 +20,7 @@ The project is currently under active development. New features and improvements
 ![Log-in](images/Log_in.png)
 ![Homepage](images/home_page.png)
 ![Series Page](images/Tv_show.png)
+![Info Page](images/info.png)
 
 
 
