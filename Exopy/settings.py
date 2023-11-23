@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-233$e8pft)9n4l)6twk3&a8l3u+!js(wf+u$#8t10t+i-$f=7j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
+
 ]
 
 ROOT_URLCONF = "Exopy.urls"
