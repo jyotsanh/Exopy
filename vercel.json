@@ -8,6 +8,11 @@
     {
         "src":"/(.*)",
         "dest":"Exopy/wsgi.py"
-    }
+    },
+    { "src": "/accounts/static/(.*)", "dest": "/accounts/static/$1" },
+    { "src": "/movies/static/(.*)", "dest": "/movies/static/$1" },
+    { "src": "/series/static/(.*)", "dest": "/series/static/$1" },
+    { "src": "/api/static/(.*)", "dest": "/api/static/$1" }
+    
     ]
 }
