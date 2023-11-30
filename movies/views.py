@@ -1,7 +1,7 @@
 #   Movies   URL
 from django.contrib.auth.models import User
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import logout
@@ -11,6 +11,7 @@ import requests
 
 base_url = "https://image.tmdb.org/t/p/w500"
 api_key = "201dadbac9d90432aa44713682a9eb60"
+
 
 def greet():
     current_time = time.localtime()
@@ -25,14 +26,14 @@ def greet():
     return gre
 
 
-
 def trend():
     url = f"https://api.themoviedb.org/3/trending/movie/week?api_key={api_key}"
 
     response = requests.get(url)
     data = response.json()
     return data
-    
+
+
 def genre(g_id):
     url = f'https://api.themoviedb.org/3/discover/movie?api_key={api_key}&with_genres={g_id}'
     response = requests.get(url)
@@ -45,24 +46,23 @@ def home(request):
     if request.method == 'POST':
         pass
     else:
-        
+
         username = request.session.get('username')
         password1 = request.session.get('password')
-        user = authenticate(username=username,password=password1)
-        
+        user = authenticate(username=username, password=password1)
+
         if user is not None:
-            login(request,user)
+            login(request, user)
             # return render(request,"movies.html")
             request.session['username'] = username
             request.session['password'] = password1
             datas = trend()
-            
-            
+
             # -----------------------------------------------------------------
             movies_title = []
             movies_url = []
             id = []
-            
+
             for movie in datas["results"]:
                 movies_title.append(movie["title"])
                 movies_url.append(base_url + movie['poster_path'])
@@ -77,7 +77,7 @@ def home(request):
                 a_titles.append(movie['title'])
                 a_id.append(movie['id'])
                 a_url.append(base_url+movie['poster_path'])
-            
+
             # ----------------------------------------------------------------------
             # fantasy
             Fantsay_data = genre(14)
@@ -89,34 +89,34 @@ def home(request):
                 f_id.append(movie['id'])
                 f_url.append(base_url+movie['poster_path'])
             data = {
-                "movie":movies_title,
-                'url':movies_url,
-                'g_title':a_titles,
-                'g_url':a_url,
-                'g_id':a_id,
-                'id':id,
-                
-                "name":username,
-                'f_title':f_titles,
-                'f_url':f_url,
-                'f_id':f_id,
+                "movie": movies_title,
+                'url': movies_url,
+                'g_title': a_titles,
+                'g_url': a_url,
+                'g_id': a_id,
+                'id': id,
+
+                "name": username,
+                'f_title': f_titles,
+                'f_url': f_url,
+                'f_id': f_id,
                 'num_range': range(len(movies_title))
-                }
-            return render(request,"movies.html",data)
+            }
+            return render(request, "movies.html", data)
         else:
-           
-            messages.error(request,"Please provide a valid username and password")
+
+            messages.error(
+                request, "Please provide a valid username and password")
             return redirect('accounts:dash')
-        
+
 
 def info(request):
     if request.method == 'POST':
         pass
     else:
 
-        
         id = request.GET.get('id')
-    
+
         movie_url = f'https://api.themoviedb.org/3/movie/{id}?api_key={api_key}'
         movie_response = requests.get(movie_url)
         movie_data = movie_response.json()
@@ -136,17 +136,17 @@ def info(request):
         crew = [member['name'] for member in credits_data['crew']]
         cast = ', '.join(cast)
         crew = ', '.join(crew)
-        data = { 
-            'title':movie_name,
-            'url':posture_url,
-            'watch_time':watch_time,
-            'rating':rating,
-            'description':description,
-            'genres':genres,
-            'cast':cast,
-            'crew':crew,
-             }
-    return render(request,"info.html",data)
+        data = {
+            'title': movie_name,
+            'url': posture_url,
+            'watch_time': watch_time,
+            'rating': rating,
+            'description': description,
+            'genres': genres,
+            'cast': cast,
+            'crew': crew,
+        }
+    return render(request, "info.html", data)
 
 
 def genre_movies(request):
@@ -155,7 +155,7 @@ def genre_movies(request):
         pass
     else:
         genre_id = request.GET.get('gid')
-        
+
         data = genre(genre_id)
         genres = request.GET.get('name')
         g_title = []
@@ -166,19 +166,18 @@ def genre_movies(request):
             g_id.append(movie['id'])
             g_url.append(base_url+movie['poster_path'])
         data = {
-                "movie":g_title,
-                'url':g_url,
-                'genre':genres,
-                
-                
-                "g_id":g_id,
-                'num_range': range(len(g_title))
-                }
-        return render(request,"genre.html",data)
+            "movie": g_title,
+            'url': g_url,
+            'genre': genres,
+
+
+            "g_id": g_id,
+            'num_range': range(len(g_title))
+        }
+        return render(request, "genre.html", data)
 
 
 # views.py
-
 
 
 def logout(request):
