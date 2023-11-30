@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-233$e8pft)9n4l)6twk3&a8l3u+!js(wf+u$#8t10t+i-$f=7j
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','now.sh ']
 
 # Application definition
 
@@ -76,21 +76,21 @@ WSGI_APPLICATION = "Exopy.wsgi.app"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'database name',
+        'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'your_password',
-        'HOST': 'localhost',  # or the hostname where your MySQL server is running
-        'PORT': '3306',      # or the port on which your MySQL server is listening
+        'PASSWORD': '36E46efc4abH21D-g53dcfbH2bc6-Bhb',
+        'HOST': 'viaduct.proxy.rlwy.net',  # or the hostname where your MySQL server is running
+        'PORT': '32973',      # or the port on which your MySQL server is listening
     }
 }
 
@@ -129,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+ 
 
 STATIC_URL = '/static/'
 
@@ -137,3 +137,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'accounts', 'static'),
+    os.path.join(BASE_DIR, 'movies', 'static'),
+    os.path.join(BASE_DIR, 'series', 'static'),
+]
+# Set the directory where the collected static files will be stored
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')

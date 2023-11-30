@@ -1,18 +1,30 @@
 {
-    "builds" : [{
-    "src" : "Exopy/wsgi.py",
-    "use" : "@vercel/python",
-    "config":{"maxLambdaSize":"15mb","runtime":"python3.9"}
-    }],
-    "routes":[
-    {
-        "src":"/(.*)",
-        "dest":"Exopy/wsgi.py"
-    },
-    { "src": "/accounts/static/(.*)", "dest": "/accounts/static/$1" },
-    { "src": "/movies/static/(.*)", "dest": "/movies/static/$1" },
-    { "src": "/series/static/(.*)", "dest": "/series/static/$1" },
-    { "src": "/api/static/(.*)", "dest": "/api/static/$1" }
-    
+    "version": 2,
+    "builds": [
+        {
+            "src": "Exopy/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.9"
+            }
+        },
+        {
+            "src": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "staticfiles_build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "Exopy/wsgi.py"
+        }
     ]
 }
