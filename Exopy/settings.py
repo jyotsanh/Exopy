@@ -86,11 +86,11 @@ WSGI_APPLICATION = "Exopy.wsgi.app"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'b233F5A*EfbFdddbfEDGbBf1daCEdFG3',
-        'HOST': 'roundhouse.proxy.rlwy.net',  # or the hostname where your MySQL server is running
-        'PORT': '49674',      # or the port on which your MySQL server is listening
+        'NAME': 'railway',# database name
+        'USER': 'postgres',# user
+        'PASSWORD': '2*aA2*eFec-bB3AfF14B-ad4G*gAb*dD',
+        'HOST': 'monorail.proxy.rlwy.net',  # or the hostname where your MySQL server is running
+        'PORT': '39199',      # or the port on which your MySQL server is listening
     }
 }
 
