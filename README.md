@@ -12,9 +12,11 @@ This is an EXOPY platform that utilizes the TMDB API for movie data and applies 
 * series page ['completed']
 * trending ['completed']
 * genre ['progressing']
+* my list ['incomplete']
+* user feedback sent to dev['incompplete']
 * deploy movie recommendation system ['pending']
 #
-The project is currently under active development. New features and improvements are being added regularly. Please refer to the changelog below for the latest updates.
+The project is currently under active development. New features and improvements are being added regularly. If you want to contribute to project exopy just send PR with your updates, I would gladly accept it .Please refer to the changelog below for the latest updates.
 
 ## Some ScreenShots:
 ![Log-in](images/Log_in.png)
