@@ -1,5 +1,7 @@
 #   ACCOUNT URL
-
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -8,10 +10,25 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
-
+from django.core.mail import send_mail
 from django.core.mail import EmailMessage, send_mail
 from Exopy import settings
 from django.template import loader
+import random
+
+
+
+def generate_code():
+    return str(random.randint(100000, 999999))
+
+def send_code_to_user(email, code):
+    send_mail(
+        'Your verification code',
+        f'Your verification code is {code}',
+        'thanksbro6969@gmail.com',  # Replace with your email
+        [email],
+        fail_silently=False,
+    )
 
 
 def dash(request):
@@ -34,6 +51,30 @@ def dash(request):
         request.session.clear()
         return render(request, "dash.html")
 
+
+def forgot(request):
+    if request.method == 'POST':
+        username = request.POST['username']  # Replace with the name of your username field
+        email = request.POST['email']
+        try:
+            user = User.objects.get(username=username, email=email)
+        except User.DoesNotExist:
+            # Handle the case where the user does not exist
+            
+            return render(request, "forgot.html", {"error": "User with provided username and email does not exist."})
+
+        # If the user exists, generate and send the code
+        try:
+            code = generate_code()
+            send_code_to_user(email, code)
+            
+        except Exception as e:
+            
+             return render(request, "excuse.html", {"error": f"Something error happend during sending mail {e}"})
+        return render(request,"excuse.html",{"error": "Email Sent successfully"})
+        
+    else:
+        return render(request,"forgot.html")
 
 # Create your views here.
 def register(request):
