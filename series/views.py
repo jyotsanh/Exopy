@@ -11,6 +11,12 @@ import requests
 
 
 
+def myList(request):
+    if request.method == 'POST':
+        return render(request,"myList.html")
+    else:
+        return render(request,"myList.html")
+
 def greet():
     current_time = time.localtime()
     hour = current_time.tm_hour

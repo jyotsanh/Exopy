@@ -41,6 +41,14 @@ def genre(g_id):
     return data
 
 
+
+def myList(request):
+    if request.method == 'POST':
+        return render(request,"myList.html")
+    else:
+        return render(request,"myList.html")
+
+
 @login_required
 def home(request):
     if request.method == 'POST':
