@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -85,12 +87,12 @@ WSGI_APPLICATION = "Exopy.wsgi.app"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',# database name
-        'USER': 'postgres',# user
-        'PASSWORD': '2*aA2*eFec-bB3AfF14B-ad4G*gAb*dD',
-        'HOST': 'monorail.proxy.rlwy.net',  # or the hostname where your MySQL server is running
-        'PORT': '39199',      # or the port on which your MySQL server is listening
+        'ENGINE': os.getenv('ENGINE'),
+        'NAME': os.getenv('NAME'),# database name
+        'USER': os.getenv('USER'),# user
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'), # or the hostname where your MySQL server is running
+        'PORT': os.getenv('PORT'),    # or the port on which your MySQL server is listening
     }
 }
 
@@ -144,3 +146,12 @@ STATICFILES_DIRS = [
 ]
 # Set the directory where the collected static files will be stored
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # or your SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'thanksbro6969@gmail.com'  # your email
+EMAIL_HOST_PASSWORD = ''  # your email password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
