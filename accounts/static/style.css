@@ -19,12 +19,13 @@ body {
     background-size: cover; /* Adjust as needed */
     background-position: center; /* Adjust as needed */
     position: fixed;
+    /* background-color: rgba(0, 0, 0, 0.5);  */
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.8; /* Set the desired opacity level */
-    z-index: -1; /* Send the pseudo-element to the background */
+    /* opacity: 0.8; Set the desired opacity level */
+    z-index: -1; 
   }
   .form {
     text-align: center;
