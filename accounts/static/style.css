@@ -1,176 +1,229 @@
-/* body{
-    display: flex;
-    align-items: center;
-justify-content: center;
-padding-top: 300px;
-background-image: url(Img/background.jpg);
-} */
 
-/* .img{
-  display: flex;
-  position: relative;
-  align-items: first baseline;
-} */
-/* .img {
-  margin-bottom: 20px;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
 }
 
-.img img {
-  display: block;
-  margin: 0 auto;
-}
-
-
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  
-    background-color:black;
-    border-radius: 25px;
-    width: 600px;
-    height: 600px;
-    transition: .4s ease-in-out;
-    align-items: center;
-    justify-content: center;
-  } */
-
-
-/*   
-  .form:hover {
-    transform: scale(1.05);
-    border: 1px solid black;
-  } */
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* height: 100vh; */
-    background-image: url("/static/background.jpg");
-    /* Add your desired background color */
+	background-image: url('./background.jpg');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
 }
 
-.form {
-    text-align: center;
-    background-color: rgb(0, 0, 0);
-    padding: 20px;
-    gap: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    /* Add margin between the logo and the form */
-    border-radius: 25px;
-    width: 500px;
-    height: 600px;
-    transition: .4s ease-in-out;
+h1 {
+	font-weight: bold;
+	margin: 0;
+	color: #000000;
 }
 
-.img img {
-    display: block;
-    margin: 0 auto;
+img{
+	text-align: center;
 }
 
-
-#heading {
-    text-align: center;
-    margin: 2em;
-    font-size: 36px;
-    color: rgb(255, 255, 255);
-    /* font-size: 1.em; */
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+	color: #000000;
 }
 
-.field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    border-radius: 25px;
-    font-size: 34px;
-    padding: 0.6em;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: #6ee419;
-    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+span {
+	font-size: 12px;
 }
 
-.input-icon {
-    height: 1.3em;
-    width: 1.3em;
-    fill: white;
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
 }
 
-.input-field {
-    background: none;
-    border: none;
-    outline: none;
-    width: 50%;
-    gap: 1.5em;
-    font-size: 30px;
-    color: #000000;
+button {
+	border-radius: 20px;
+	border: 1px solid #000000;
+	background-color: #14ff18;
+	color: #000000;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 }
 
-.form .btn {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 2.5em;
+button:active {
+	transform: scale(0.95);
 }
 
-.button1 {
-    padding: 0.5em;
-    padding-left: 1.1em;
-    padding-right: 1.1em;
-    border-radius: 5px;
-    margin-right: 0.5em;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-    font-size: 26px;
+button:focus {
+	outline: none;
 }
 
-.button1:hover {
-    background-color: black;
-    color: white;
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
 }
 
-.button2 {
-    padding: 0.5em;
-    padding-left: 2.3em;
-    padding-right: 2.3em;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-    font-size: 26px;
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
 }
 
-.button2:hover {
-    background-color: black;
-    color: white;
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
 }
 
-.button3 {
-    margin-bottom: 3em;
-    margin-top: 1.5em;
-    padding: 0.5em;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-    font-size: 26px;
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
 }
 
-.button3:hover {
-    background-color: red;
-    color: white;
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+	background: #000000;
+	background: -webkit-linear-gradient(to right, #0f0, #3df334);
+	background: linear-gradient(to right,#a1f61a, #0f0 );
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+.social-container {
+	margin: 20px 0;
+}
+
+.social-container a {
+	border: 1px solid #000000;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
 }
