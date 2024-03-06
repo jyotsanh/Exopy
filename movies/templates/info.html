@@ -6,6 +6,7 @@
   href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
   rel="stylesheet"
 />
+{% load static %}
 <style>
   h1 {
     text-align: center;
@@ -177,6 +178,10 @@
         <a href="javascript:void(0);" onclick="toggleCast()">See More</a> -->
     <button id="addToFavoritesBtn">Add to your favorites</button>
   </div>
+  <video width="640" height="360" controls>
+    <source src="{% static 'all.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 <!-- <script>
     var isDescriptionExpanded = false;
